@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
 
 /**
  * @author Manav Rajput Java Developer
@@ -16,7 +15,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Data
 @Entity
 @Table(name = "tbl_adminRegistration")
-public class AdminRegistration {
+public class AdminRegistrationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
