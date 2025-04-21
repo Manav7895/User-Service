@@ -9,11 +9,17 @@ public interface RestMappingConstant {
     interface Endpoints {
         String HEALTH_CHECK = "healthCheck";
         String ADMIN_REGISTRATION = "admin/register";
+        String ADMIN_LOGIN = "admin/login";
+
     }
 
     interface Message{
         String COMMON_MESSAGE = "Something went wrong. Please try again later.";
-        String SAVED_MESSAGE = "Saved SuccessFully";
+        String SAVED_MESSAGE = "Saved SuccessFully.";
+        String LOGIN_SUCCESSFULLY = "Login SuccessFully.";
+        String ADMIN_NOT_EXIST = "Admin Not Exist.";
+        String UNAUTHORIZED = "Unauthorized";
+
     }
 
     interface StatusCodes {

@@ -6,6 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Manav Rajput Java Developer
  */
@@ -39,4 +43,15 @@ public class AdminRegistrationEntity {
 
     @Column(name = "password", nullable = false, length = 255)
     private String password;
+
+    @Column(name = "createdDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createdDate;
+
+    @Column(name = "updatedDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime updatedDate;
+
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AdminLoginAnalytic> loginAnalytics = new ArrayList<>();
 }

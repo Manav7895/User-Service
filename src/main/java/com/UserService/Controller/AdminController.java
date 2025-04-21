@@ -43,5 +43,15 @@ public class AdminController {
         } catch (RuntimeException e) {
             throw new AdminException(RestMappingConstant.Message.COMMON_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);        }
     }
+
+    @PostMapping(RestMappingConstant.Endpoints.ADMIN_LOGIN)
+    public ResponseEntity<BaseApiResponse> AdminLogin(@RequestBody Checksum checksum) throws JsonProcessingException {
+        try {
+            AdminLogin adminLogin = objectMapper.readValue(decode.decryptText(checksum.getChecksum()), AdminLogin.class);
+            BaseApiResponse baseApiResponse = adminServiceAbstract.AdminLogin(adminLogin);
+            return new ResponseEntity<>(baseApiResponse, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            throw new AdminException(RestMappingConstant.Message.COMMON_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);        }
+    }
 }
 

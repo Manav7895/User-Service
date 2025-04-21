@@ -1,5 +1,6 @@
 package com.UserService.Service;
 
+import com.UserService.Request.Admin.AdminLogin;
 import com.UserService.Request.Admin.AdminRegistration;
 import com.UserService.Response.BaseApiResponse;
 
@@ -8,6 +9,6 @@ import com.UserService.Response.BaseApiResponse;
  */
 public interface AdminServiceAbstract {
 
-    void AdminLogin();
+    BaseApiResponse AdminLogin(AdminLogin adminLogin);
     BaseApiResponse AdminRegistration(AdminRegistration adminRegistration);
 }
