@@ -1,10 +1,13 @@
 package com.UserService.Service.ServiceImp;
 
+import com.UserService.Constant.RestMappingConstant;
 import com.UserService.Entity.Admin.AdminRegistrationEntity;
+import com.UserService.Exception.AdminException;
 import com.UserService.Repository.AdminRegistrationRepo;
 import com.UserService.Request.Admin.AdminRegistration;
 import com.UserService.Response.BaseApiResponse;
 import com.UserService.Service.AdminServiceAbstract;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,12 +41,11 @@ public class AdminServiceImp implements AdminServiceAbstract {
                     .contactNo(adminRegistration.getContactNo())
                     .password(passwordEncoder.encode(adminRegistration.getPassword()))
                     .build();
-
             // save to DB
             adminRegistrationRepo.save(adminRegistrationEntity);
-            return setSuccess("Saved SuccessFully", "200");
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+            return setSuccess(RestMappingConstant.Message.SAVED_MESSAGE, RestMappingConstant.StatusCodes.SUCCESS);
+        } catch (AdminException adminException) {
+            throw new AdminException(RestMappingConstant.Message.COMMON_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
